@@ -1,2 +1,85 @@
-<h1>Scope9.ctl Dashboard</h1>
-<p>Module v.0 loaded</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css"/>
+    <title>Scope9</title>
+</head>
+
+<body>
+    <video id="bg-video" loop muted style="opacity: 0; position: fixed; top: 0; left: 0; width: 0; height: 0; pointer-events: none;"></video>
+
+    <header>
+        <div class="header-container">
+            <div class="visualizer">
+                <div class="bar" style="animation-delay: 0s;"></div>
+                <div class="bar" style="animation-delay: 0.1s;"></div>
+                <div class="bar" style="animation-delay: 0.2s;"></div>
+                <div class="bar" style="animation-delay: 0.3s;"></div>
+                <div class="bar" style="animation-delay: 0.4s;"></div>
+            </div>
+            <h1 id="logo">Scope9.ctl</h1>
+            <nav>
+                <ul id="header-nav">
+                    <li data-section="health">.health</li>
+                    <li data-section="extensions">.extensions</li>
+                    <li data-section="eject">.eject</li>
+                </ul>
+            </nav>
+            <div class="audio-controls">
+                <button id="mute-btn" class="mute-btn" title="Toggle music"></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="health" class="section-content active">
+            <h2>.health</h2>
+            <p class="section-text">System Status & Backend Information</p>
+            <p class="section-text info">Your backend is running on <span class="accent">Scope9.Backend</span> with the <span class="accent">Scope9.Core</span> library on <span class="accent">net8.0</span> runtime.</p>
+        </div>
+
+        <div id="extensions" class="section-content">
+            <h2>.extensions</h2>
+            <p class="section-text">Navigate with ↑↓ • Select with ENTER</p>
+            <div class="menu-container">
+                <div id="menu-list" class="menu-list">
+                    <div class="menu-item selected" data-path="net.scan">
+                        <span class="menu-icon"></span>
+                        <span class="menu-text">net.scan</span>
+                    </div>
+                    <div class="menu-item" data-path="net.scan/basic_port_scanner">
+                        <span class="menu-icon" style="margin-left: 1.5rem;">└─</span>
+                        <span class="menu-text">basic_port_scanner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="eject" class="section-content">
+            <h2>.eject</h2>
+            <p class="section-text">System Control & Build Scripts</p>
+            <p class="section-text info">Available scripts: <span class="accent">build.sh</span>, <span class="accent">clean.sh</span>, <span class="accent">start.sh</span></p>
+        </div>
+
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <span class="status-indicator"></span>
+                <span class="system-label" id="terminal-label">backend://scope9.ctl</span>
+            </div>
+            <div class="terminal-content">
+                <p id="health-response" class="terminal-text">&gt; System ready</p>
+                <p id="extensions-response" class="terminal-text" style="display: none;">&gt; Awaiting extension input...</p>
+                <p id="eject-response" class="terminal-text" style="display: none;">&gt; Ready to execute...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Scope9.localhub</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
