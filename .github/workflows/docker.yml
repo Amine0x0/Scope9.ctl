@@ -30,7 +30,7 @@ jobs:
           file: docker/backend/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}-backend:latest
+            ghcr.io/amine0x0/scope9-ctl-backend:latest
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v5
@@ -39,4 +39,4 @@ jobs:
           file: docker/frontend/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}-frontend:latest
+            ghcr.io/amine0x0/scope9-ctl-frontend:latest
