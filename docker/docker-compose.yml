@@ -6,7 +6,14 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost/index.html"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
   backend:
     build:
@@ -15,8 +22,16 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./extensions:/app/extensions
-      - ./data:/app/data
+      - ../extensions:/app/extensions
+      - ../data:/app/data
+      - ../scripts:/app/scripts
       - ./logs:/app/logs
     environment:
       - DOTNET_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/stat"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
