@@ -15,7 +15,6 @@ FROM base AS final
 WORKDIR /app/Scope9.Backend
 COPY --from=publish /app/publish .
 COPY extensions/ /app/extensions/
-COPY data/ /app/data/
-RUN mkdir -p /app/logs
+RUN mkdir -p /app/data /app/logs
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 ENTRYPOINT ["dotnet", "Scope9.Backend.dll"]
