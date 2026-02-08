@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")/.." || exit 1
 set -e
 
 docker compose -f docker/docker-compose.yml down --volumes --remove-orphans

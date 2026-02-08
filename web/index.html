@@ -37,7 +37,7 @@
         <div id="health" class="section-content active">
             <h2>.health</h2>
             <p class="section-text">System Status & Backend Information</p>
-            <p class="section-text info">Your backend is running on <span class="accent">Scope9.Backend</span> with the <span class="accent">Scope9.Core</span> library on <span class="accent">net8.0</span> runtime.</p>
+            <div id="health-display"></div>
         </div>
 
         <div id="extensions" class="section-content">
@@ -45,22 +45,14 @@
             <p class="section-text">Navigate with ↑↓ • Select with ENTER</p>
             <div class="menu-container">
                 <div id="menu-list" class="menu-list">
-                    <div class="menu-item selected" data-path="net.scan">
-                        <span class="menu-icon"></span>
-                        <span class="menu-text">net.scan</span>
-                    </div>
-                    <div class="menu-item" data-path="net.scan/basic_port_scanner">
-                        <span class="menu-icon" style="margin-left: 1.5rem;">└─</span>
-                        <span class="menu-text">basic_port_scanner</span>
-                    </div>
                 </div>
             </div>
         </div>
 
         <div id="eject" class="section-content">
             <h2>.eject</h2>
-            <p class="section-text">System Control & Build Scripts</p>
-            <p class="section-text info">Available scripts: <span class="accent">build.sh</span>, <span class="accent">clean.sh</span>, <span class="accent">start.sh</span></p>
+            <p class="section-text">System Control</p>
+            <div id="script-list" class="script-list"></div>
         </div>
 
         <div class="terminal-box">
@@ -69,9 +61,16 @@
                 <span class="system-label" id="terminal-label">backend://scope9.ctl</span>
             </div>
             <div class="terminal-content">
-                <p id="health-response" class="terminal-text">&gt; System ready</p>
-                <p id="extensions-response" class="terminal-text" style="display: none;">&gt; Awaiting extension input...</p>
-                <p id="eject-response" class="terminal-text" style="display: none;">&gt; Ready to execute...</p>
+                <div id="health-response" style="display: none;">
+                    <p class="terminal-text">&gt; Backend Statistics</p>
+                    <div id="stats-display"></div>
+                </div>
+                <div id="extensions-response" style="display: none;">
+                    <p class="terminal-text">&gt; Awaiting extension input...</p>
+                </div>
+                <div id="eject-response" style="display: none;">
+                    <p class="terminal-text">&gt; Ready to execute...</p>
+                </div>
             </div>
         </div>
     </main>

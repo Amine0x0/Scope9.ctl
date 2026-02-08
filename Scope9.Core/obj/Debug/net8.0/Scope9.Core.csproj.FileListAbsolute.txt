@@ -1,0 +1,13 @@
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/Scope9.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/Scope9.Core.AssemblyInfoInputs.cache
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/Scope9.Core.AssemblyInfo.cs
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/Scope9.Core.csproj.CoreCompileInputs.cache
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/Scope9.Core.sourcelink.json
+/home/orbit/Desktop/scope9.git/Scope9.Core/bin/Debug/net8.0/Scope9.Core.deps.json
+/home/orbit/Desktop/scope9.git/Scope9.Core/bin/Debug/net8.0/Scope9.Core.dll
+/home/orbit/Desktop/scope9.git/Scope9.Core/bin/Debug/net8.0/Scope9.Core.pdb
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/Scope9.Core.csproj.AssemblyReference.cache
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/Scope9.Core.dll
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/refint/Scope9.Core.dll
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/Scope9.Core.pdb
+/home/orbit/Desktop/scope9.git/Scope9.Core/obj/Debug/net8.0/ref/Scope9.Core.dll

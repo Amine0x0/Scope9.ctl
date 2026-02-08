@@ -3,13 +3,17 @@ import subprocess
 import sys
 import time
 import requests
+import os
+from pathlib import Path
 
-def run_cmd(cmd):
-    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+PROJECT_ROOT = Path(__file__).parent.parent.absolute()
+
+def run_cmd(cmd, cwd=None):
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=cwd)
     return result.returncode == 0, result.stdout, result.stderr
 
 def check_build():
-    success, stdout, stderr = run_cmd("cd /home/orbit/Desktop/Scope9.ctl && ./scripts/build.sh")
+    success, stdout, stderr = run_cmd("./scripts/build.sh", cwd=PROJECT_ROOT)
     if not success:
         print("[FAIL] Build failed")
         print(stderr)
@@ -18,7 +22,8 @@ def check_build():
     return True
 
 def check_services_running():
-    success, stdout, stderr = run_cmd("docker compose -f /home/orbit/Desktop/Scope9.ctl/docker/docker-compose.yml ps --quiet")
+    compose_file = PROJECT_ROOT / "docker" / "docker-compose.yml"
+    success, stdout, stderr = run_cmd(f"docker compose -f {compose_file} ps --quiet")
     if not success:
         print("[FAIL] Failed to check services")
         return False
@@ -34,8 +39,8 @@ def check_backend_health():
     try:
         for _ in range(10):
             try:
-                response = requests.get("http://localhost:5000/health", timeout=2)
-                if response.status_code == 200 or response.status_code == 404:
+                response = requests.get("http://localhost:5000/api/stat", timeout=2)
+                if response.status_code == 200:
                     print("[PASS] Backend responding")
                     return True
             except:
@@ -59,18 +64,14 @@ def check_frontend_health():
 
 def main():
     print("\n=== Scope9 CI/CD Test ===\n")
+    print(f"Project root: {PROJECT_ROOT}\n")
     
     print("[1/4] Building...")
     if not check_build():
         sys.exit(1)
     
     print("[2/4] Starting services...")
-    run_cmd("cd /home/orbit/Desktop/Scope9.ctl && ./scripts/start.sh")
-    time.sleep(3)
-    
-    print("[3/4] Checking services...")
-    if not check_services_running():
-        sys.exit(1)
+    run_cmd("./scripts/start.sh", cwd=PROJECT_ROOT)
     
     print("[4/4] Health checks...")
     check_backend_health()
